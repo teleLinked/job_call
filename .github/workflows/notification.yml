@@ -15,9 +15,9 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHANNEL }}
           token: ${{ secrets.BOT_TOKEN }}
           message: |
-            ** ${{ github.actor }} has a new commit! **
-            Message: ``` ${{ github.event.commits[0].message }} ```
+             ${{ github.actor }} has a new commit!
+            Message:  ${{ github.event.commits[0].message }} 
 
-            [Repository](${{ github.repository }})
+            Repository${{ github.repository }}
 
-            [See Changes](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+            See Changeshttps://github.com/${{ github.repository }}/commit/${{ github.sha }}
