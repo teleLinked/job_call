@@ -16,7 +16,7 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           message: |
              ${{ github.actor }} has a new commit!
-            Message:  ${{ github.event.commits[0].message }} 
+            Message: ${{ github.event.commits[0].message }} 
 
             Repository${{ github.repository }}
 
