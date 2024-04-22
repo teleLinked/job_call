@@ -22,14 +22,15 @@ class Database:
         return response.fetchone()
 
     def insert_new_related_job_jobinja(self, title: str, category: str,
-                               salary: str, location, description: str, date: str):
-        self.cursor.execute(f"""INSERT INTO jobinja VALUES 
-                            ({title}, {category}, {salary}, {location}, {description}, {date})""")
+                               salary: str, location: str, description: str, date: str):
+        self.cursor.execute("""INSERT INTO jobinja (title, category, salary, location, description, date)
+                           VALUES (?, ?, ?, ?, ?, ?)""",
+                        (title, category, salary, location, description, date))
         self.connection.commit()
 
     def insert_new_related_job_linkedin(self, title: str, category: str,
                                country: str, description: str, date: str):
-        self.cursor.execute(f"""INSERT INTO jobinja VALUES 
+        self.cursor.execute(f"""INSERT INTO linkedin VALUES 
                             ({title}, {category}, {country}, {description}, {date})""")
         self.connection.commit()
 
@@ -50,6 +51,29 @@ class Database:
         return response.fetchall()
 
 db = Database()
+
+def test_insert_new_related_job_jobinja():
+    db = Database()
+    title = "Django_Developer"
+    category = "backend"
+    salary = "20.000.000T"
+    location = "tehran"
+    description = "python,django,SQL needed"
+    date = "1402.1.1"
+
+    db.insert_new_related_job_jobinja(title,category,salary,location,description,date)
+        
+    cursor = db.connection.cursor()
+    cursor.execute("SELECT * FROM jobinja WHERE title=?", (title,))
+    result = cursor.fetchone()
+
+    if result is not None:
+        print("Job inserted successfully:", result)
+    else:
+        print("Failed to insert job")
+
+    db.connection.close()
+
 
 def test_get_alert_system():
 
@@ -83,3 +107,4 @@ def test_set_alert_system():
 if __name__ == "__main__":
     test_get_alert_system()
     test_set_alert_system()
+    test_insert_new_related_job_jobinja()
