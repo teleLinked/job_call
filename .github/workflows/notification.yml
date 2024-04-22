@@ -18,6 +18,6 @@ jobs:
              ${{ github.actor }} has a new commit!
             Message: ${{ github.event.commits[0].message }} 
 
-            Repository${{ github.repository }}
+              Repository${{ github.repository }}
 
-            See Changeshttps://github.com/${{ github.repository }}/commit/${{ github.sha }}
+              See Changeshttps://github.com/${{ github.repository }}/commit/${{ github.sha }}
