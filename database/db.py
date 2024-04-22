@@ -45,18 +45,22 @@ class Database:
             self.connection.commit()
 
     def get_alert_system(self) -> str:
-        response = self.cursor.execute("SELECT * FROM alert WHERE ROWID IN (SELECT max(ROWID) FROM alert)")
+        response = self.cursor.execute("""SELECT * FROM alert 
+                                       WHERE ROWID IN (SELECT max(ROWID) FROM alert)""")
         return response.fetchone()
 
     def insert_new_related_job_jobinja(self, title: str, category: str,
                                salary: str, location, description: str, date: str):
-        self.cursor.execute(f"""INSERT INTO jobinja (title, category, salary, location, description, date) VALUES 
-                            ('{title}', '{category}', '{salary}', '{location}', '{description}', '{date}')""")
+        self.cursor.execute(f"""INSERT INTO jobinja
+                            (title, category, salary, location, description, date) VALUES 
+                            ('{title}', '{category}', '{salary}',
+                            '{location}', '{description}', '{date}')""")
         self.connection.commit()
 
     def insert_new_related_job_linkedin(self, title: str, category: str,
                                country: str, description: str, date: str):
-        self.cursor.execute(f"""INSERT INTO linkedin (title, category, country, description, date) VALUES 
+        self.cursor.execute(f"""INSERT INTO linkedin
+                            (title, category, country, description, date) VALUES 
                             ('{title}', '{category}', '{country}', '{description}', '{date}')""")
         self.connection.commit()
 
@@ -69,12 +73,11 @@ class Database:
         return response.fetchone()
 
     def get_all_related_jobs_jobinja(self):
-        response = self.cursor.execute(f"SELECT * FROM jobinja")
+        response = self.cursor.execute("SELECT * FROM jobinja")
         return response.fetchall()
 
     def get_all_related_jobs_linkedin(self):
-        response = self.cursor.execute(f"SELECT * FROM linkedin")
+        response = self.cursor.execute("SELECT * FROM linkedin")
         return response.fetchall()
-
 
 db = Database()

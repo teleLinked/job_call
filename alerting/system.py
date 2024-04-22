@@ -4,6 +4,7 @@ from . import FORMATTED_TEXT_ALERT
 
 
 def send_notification(data):
+    """ Send system notification """
     notification("New Job Alert!", FORMATTED_TEXT_ALERT.format(
         platform=data['platform'],
         title=data['title'],

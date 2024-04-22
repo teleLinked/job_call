@@ -3,12 +3,17 @@ bs4==0.0.2
 certifi==2024.2.2
 charset-normalizer==3.3.2
 idna==3.7
+mccabe==0.7.0
 notify-send==1.1.2
 pyaes==1.6.1
 pycairo==1.26.0
+pycodestyle==2.11.1
+pyflakes==3.2.0
 PyGObject==3.48.2
 Pyrogram==2.0.106
 PySocks==1.7.1
+python-decouple==3.8
 requests==2.31.0
 soupsieve==2.5
+TgCrypto==1.2.5
 urllib3==2.2.1
