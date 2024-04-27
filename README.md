@@ -27,3 +27,28 @@ in windows(Powershell):
 ### install requirements
 
 ``` pip install -r requirements.txt ```
+
+
+
+### Setting Email and Password
+
+#### <span>Linux, macOS</span>
+```
+export EMAIL=Your_Email@gmail.com
+export PASSWORD=Your_Password
+```
+
+#### <span>Windows</span>
+```
+set EMAIL=Your_Email@gmail.com
+set PASSWORD=Your_Password
+```
+
+<span>After You've Set Email and Password, please run this command befor running main project</span>
+```
+python auth.py
+```
+<span>then</span>
+```
+python main.py
+```
