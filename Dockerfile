@@ -1,36 +1,16 @@
-FROM python:3.9
-
+FROM python:3.11
 
 WORKDIR /app
 
+COPY requirements.txt /tmp/requirements.txt
 
 COPY . /app
 
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    ca-certificates \
-    fonts-liberation \
-    libappindicator3-1 \
-    libasound2 \
-    libatk-bridge2.0-0 \
-    libatk1.0-0 \
-    libcups2 \
-    libdbus-1-3 \
-    libgdk-pixbuf2.0-0 \
-    libnspr4 \
-    libnss3 \
-    libx11-xcb1 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxrandr2 \
-    xdg-utils \
-    wget \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip install playwright==1.14.0
-
-RUN pip install csv
+RUN apt update && apt install build-essential pkg-config cmake libgirepository1.0-dev -y && \
+    pip install --upgrade pip && \
+    pip install -r /tmp/requirements.txt && \
+    playwright install --with-deps chromium && \
+    rm /tmp/requirements.txt
 
 # Run the script
 CMD ["python", "main.py"]

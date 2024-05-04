@@ -1,8 +1,10 @@
 from playwright.sync_api import sync_playwright,Route,Request, Response
 import csv
 import time
+
+
 def insert_into_csv(li_elements):
-    with open('list_items.csv', 'a', newline='', encoding='utf-8') as csvfile:
+    with open('list_items.csv', 'a', encoding='utf-8') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(['List Items'])  
         for li in li_elements:
@@ -55,8 +57,3 @@ def scrape_and_insert(url):
         browser.close()
                 # page.wait_for_selector('//*[@id="js-jobSeekerSearchResult"]/div/div[2]/section/div/ul/li')
                 # page.wait_for_selector('#js-jobSeekerSearchResult > div > div:nth-child(2) > section > div > ul > li',timeout=60000)
-
-if __name__ == "__main__":
-    url = "https://jobinja.ir/jobs"
-    scrape_and_insert(url)
-    

@@ -1,0 +1,7 @@
+version: '3.9'
+
+services:
+  job_call:
+    image: jobcall:test-1
+    volumes:
+      - ./:/app

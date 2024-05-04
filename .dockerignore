@@ -1,0 +1,10 @@
+.env
+.gitignore
+.git
+.system-alert.session
+LICENSE
+PKGBUILD
+README.md
+.venv
+.github
+.session
