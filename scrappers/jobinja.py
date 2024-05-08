@@ -8,7 +8,10 @@ def insert_into_csv(li_elements):
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(['List Items'])  
         for li in li_elements:
+            lenth = len(li)
+            csv_writer.writerow([lenth])
             csv_writer.writerow([li.strip()])  
+            csv_writer.writerow(["\n ---------------------------------------- \n"])
 
 def get_li_elements(page):
     # Attempt to locate the elements with a retry mechanism
