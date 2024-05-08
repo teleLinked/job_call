@@ -48,7 +48,7 @@ def scrape_and_insert(url):
                 insert_into_csv(li_elements)
                 print("List items inserted into CSV file.")
 
-                next_link = page.query_selector('//*[@id="js-jobSearchPaginator"]/div/ul/li[12]/a')
+                next_link = page.query_selector('//*[@class="aginator-next-text"]')
 
                 if not next_link:
                     break
